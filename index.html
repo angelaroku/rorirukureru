@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rorirukureru</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Orbitron', sans-serif;
+            color: #cdd3cd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-shadow: 0 0 5px #505050;
+
+            background:
+                repeating-linear-gradient(0deg,
+                    rgba(0, 255, 0, 0.05),
+                    rgba(0, 255, 0, 0.05) 2px,
+                    transparent 2px,
+                    transparent 4px),
+                #150015;
+            background-attachment: fixed;
+        }
+
+        .contenedorPrincipal {
+            background: #111;
+            border: 4px solid #072c00;
+            padding: 30px;
+            max-width: 800px;
+            width: 90%;
+            box-sizing: border-box;
+        }
+
+        .rokuPerfil {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .rokuPerfil img {
+
+            object-fit: cover;
+            width: 180px;
+            height: 180px;
+        }
+
+        .rokuPerfil h1 {
+            font-size: 1.4rem;
+            color: #cdd3cd;
+            margin: 0;
+            text-align: center;
+        }
+
+        .links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .links a {
+            background-color: #111;
+            border: 2px solid #072c00;
+            padding: 10px 18px;
+            color: #5ae3bc;
+            text-decoration: none;
+            transition: all 0.3s;
+            text-align: center;
+            font-size: 0.9rem;
+            flex: 1 1 180px;
+            max-width: 220px;
+        }
+
+        .links a:hover {
+            background-color: #82d2be;
+            color: #111;
+            text-shadow: none;
+        }
+
+
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            .rokuPerfil h1 {
+                font-size: 1.2rem;
+            }
+
+            .rokuPerfil img {
+                width: 140px;
+                height: 140px;
+            }
+
+            .links {
+                gap: 10px;
+            }
+
+            .links a {
+                padding: 8px 10px;
+                font-size: 0.8rem;
+                flex: 1;
+            }
+
+            
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <content class="contenedorPrincipal">
+        <section class="rokuPerfil">
+            <img src="img/flor_blanca.png" alt="logoRoriruKureru" />
+            <h1>roriru kureru</h1>
+        </section>
+
+        <nav class="links">
+            <a href="contacto.html">Contactame</a>
+            <a href="rorirukureru.html">¿Quién soy?</a>
+            <a href="miscosis.html">Proyectos</a>
+        </nav>
+    </content>
+
+    <footer>
+        <p>
+    <!-- <audio class="enlaceFinal" controls src="sounds/en lap4r3d.wav"></audio>-->
+        <audio src="sounds/enLap4r3d_DEMO.wav" autoplay> Estas oyendo una EnLaPared - RokuDEMO </audio>
+        
+        </p>
+       
+
+    </footer>
+
+</body>
+
+</html>
