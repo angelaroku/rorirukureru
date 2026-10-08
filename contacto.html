@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0f0f0f;
+      color: #ccdbca;
+      font-family: 'Orbitron', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-shadow: 0 0 5px #082503;
+
+      background-image: repeating-linear-gradient(
+                0deg,
+                rgba(0, 255, 0, 0.05),
+                rgba(0, 255, 0, 0.05) 2px,
+                transparent 2px,
+                transparent 4px
+            );
+
+    }
+
+    #contacto {
+      text-align: center;
+    }
+
+    .zonaContactame {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .zonaContactame div {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .zonaContactame img {
+      width: 40px;
+      height: 40px;
+    }
+
+    img.logoImg {
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <article id="contacto">
+    <h1>Contacto</h1>
+    <hr />
+    <footer class="zonaContactame">
+      <div>
+        <img src="img/iconoInstagram.png" alt="Redes" class="logoImg"/>
+        <p>@rorirukureru</p>
+      </div>
+      <div>
+        <img src="img/iconoCorreo.png" alt="Correo" class="logoImg" />
+        <p>faundezroku@gmail.com</p>
+      </div>
+      <div>
+        <img src="img/iconoTelefono.png" alt="Teléfono" class="logoImg"/>
+        <p>661 18 96 04</p>
+      </div>
+      <div>
+        <img src="img/iconoUbicacion.png" alt="Ubicación" class="logoImg"/>
+        <p>Madrid, España</p>
+      </div>
+    </footer>
+  </article>
+
+</body>
+
+</html>
