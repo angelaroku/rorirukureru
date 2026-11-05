@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>roriru kureru</title>
     <style>
         body {
@@ -16,17 +17,52 @@
             min-height: 100vh;
             text-shadow: 0 0 5px #505050;
 
-            background: 
-                repeating-linear-gradient(
-                    0deg,
+            background:
+                repeating-linear-gradient(0deg,
                     rgba(0, 255, 0, 0.05),
                     rgba(0, 255, 0, 0.05) 2px,
                     transparent 2px,
-                    transparent 4px
-                ),
+                    transparent 4px),
                 #150015;
             background-attachment: fixed;
         }
+
+        
+        .barraNavegacion {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(17, 17, 17, 0.95);
+            border-bottom: 2px solid #072c00;
+            padding: 12px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            box-sizing: border-box;
+        }
+
+        .barraNavegacion nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .barraNavegacion a {
+            color: #5ae3bc;
+            text-decoration: none;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .barraNavegacion a:hover {
+            color: #82d2be;
+            text-shadow: 0 0 5px #5ae3bc;
+        }
+
+
 
         .contenedorPrincipal {
             background: #111;
@@ -35,9 +71,10 @@
             max-width: 800px;
             width: 90%;
             box-sizing: border-box;
+            margin-top: 60px;
         }
 
-        header h1 {
+        .contenedorPrincipal h1 {
             font-size: 1.4rem;
             text-align: center;
             color: #cdd3cd;
@@ -117,30 +154,52 @@
         }
     </style>
 </head>
+
 <body>
+
+    <header class="barraNavegacion">
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="contacto.html">Contacto</a>
+            <a href="rorirukureru.html">¿Qué es?</a>
+            <a href="miscosis.html">rorirukureru</a>
+
+        </nav>
+    </header>
+
     <main class="contenedorPrincipal">
-        <header>
+        
             <h1>roriru kureru</h1>
             <p class="subtitulo">ROKU - Artista Digital Musical</p>
-        </header>
+ 
 
-        <!--
-        <nav class="menu">
-            <a href="">Todo</a>
-            <a href="">Software</a>
-            <a href="">Data</a>
-            <a href="">Web</a>
-        </nav> -->
 
         <section class="proyecto" id="proyecto1">
             <h2>roku - ES</h2>
 
-            <p>
-            
 
+            <h3>"RORIRU KURERU" - ¿Qué es?</h3>
+            <p>
+                El nombre de "roriru kureru", nace de una degradación de palabras y sonidos sin sentido,
+                los cuáles con el tiempo fueron tomando forma y se convirtieron en el nombre de un proyecto sonoro.
+                <br>
+                Hablando con sinceridad, "roriru kureru", no es un nombre intuitivo, ni simple de recordar
+                por eso para simplificarlo, se acorta de esta manera: "RO" + "KU" = roku
+
+                <br><br>
+                La base de este proyecto sonoro, es la precariedad de recursos, de esta manera, con poco y
+                sin mucho sentido, de forma orgánica se fué generando una esencia particular
+                y la propia vibra del proyecto cobró vida por inercia. La plataforma inicial
+                para compartir siempre fue SoundCloud, pero poco a poco se amplió a otras plataforma
+                como Instagram o Youtube.
+                <br><br>
+               
             </p>
+
+
+
             <p><strong class="tipoP"> </strong> </p>
-            <p><strong class="tipoP"> </strong>  </p>
+            <p><strong class="tipoP"> </strong> </p>
             <p><strong class="tipoP"> </strong> </p>
         </section>
 
@@ -149,16 +208,40 @@
 
             <p></p>
             <p><strong class="tipoP"> </strong> </p>
-            <p><strong class="tipoP"> </strong>  </p>
+            <p><strong class="tipoP"> </strong> </p>
             <p><strong class="tipoP"> </strong> </p>
         </section>
 
 
+        
         <footer>
             <p>
                 Rider: <a class="enlaceFinal" href="">roku-rider</a>
             </p>
+            <p>
+                <audio id="audioFondo" src="sounds/enLap4r3d_DEMO.wav" preload="auto" autoplay></audio>
+                Estás oyendo una EnLaPared - RokuDEMO
+            </p>
         </footer>
+
+        <script>
+            const audio = document.getElementById('audioFondo');
+
+            const tiempoGuardado = sessionStorage.getItem('audioTiempo');
+            if (tiempoGuardado) {
+                audio.currentTime = parseFloat(tiempoGuardado);
+            }
+
+            audio.play().catch(e => {
+                console.log("El navegador requiere una interacción previa para reproducir audio.");
+            });
+
+            window.addEventListener('beforeunload', () => {
+                sessionStorage.setItem('audioTiempo', audio.currentTime);
+            });
+        </script>
+
     </main>
 </body>
+
 </html>
