@@ -13,6 +13,7 @@
             font-family: 'Orbitron', sans-serif;
             color: #cdd3cd;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
@@ -28,6 +29,42 @@
             background-attachment: fixed;
         }
 
+
+        .barraNavegacion {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(17, 17, 17, 0.95);
+            border-bottom: 2px solid #072c00;
+            padding: 12px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            box-sizing: border-box;
+        }
+
+        .barraNavegacion nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .barraNavegacion a {
+            color: #5ae3bc;
+            text-decoration: none;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .barraNavegacion a:hover {
+            color: #82d2be;
+            text-shadow: 0 0 5px #5ae3bc;
+        }
+
+
         .contenedorPrincipal {
             background: #111;
             border: 4px solid #072c00;
@@ -35,6 +72,8 @@
             max-width: 800px;
             width: 90%;
             box-sizing: border-box;
+            margin-top: auto;
+            margin-bottom: auto;
         }
 
         .rokuPerfil {
@@ -89,7 +128,40 @@
             text-shadow: none;
         }
 
+        footer {
+            background-color: rgba(17, 17, 17, 0.95);
+            border-top: 2px solid #072c00;
+            width: 100%;
+            text-align: center;
+            font-size: 0.6rem;
+            padding: 12px 0;
+            color: #888;
+            margin-top: 40px;
+            box-sizing: border-box;
+        }
 
+        footer p {
+            margin: 0;
+        }
+
+        .btnPlayDemo {
+            background-color: #111;
+            border: 2px solid #072c00;
+            color: #5ae3bc;
+            width: 22px;
+            height: 22px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 0.6rem;
+            transition: all 0.2s;
+        }
+
+        .btnPlayDemo:hover {
+            background-color: #82d2be;
+            color: #111;
+        }
 
         @media (max-width: 600px) {
             .container {
@@ -122,12 +194,23 @@
                 color: #888;
             }
 
-
         }
     </style>
 </head>
 
 <body>
+
+    <header class="barraNavegacion">
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="contacto.html">Contacto</a>
+            <a href="rorirukureru.html">¿Qué es?</a>
+            <a href="miscosis.html">rorirukureru</a>
+
+        </nav>
+    </header>
+
+
     <content class="contenedorPrincipal">
         <section class="rokuPerfil">
             <img src="img/flor_blanca.png" alt="logoRoriruKureru" />
@@ -142,14 +225,53 @@
     </content>
 
     <footer>
+
         <p>
-            Rider: <a class="enlaceFinal" href="">roku-rider</a>
+            <audio id="audioFondo" src="sounds/enLap4r3d_DEMO.wav" preload="auto" autoplay>Estas oyendo una EnLaPared -
+                RokuDEMO</audio>
+            Estás oyendo una EnLaPared - RokuDEMO
         </p>
-        <!-- <audio class="enlaceFinal" controls src="sounds/en lap4r3d.wav"></audio>-->
-        <a><audio src="sounds/enLap4r3d_DEMO.wav" autoplay> Estas oyendo una EnLaPared - RokuDEMO </audio>
+
+        <button id="btnPlayDemo" class="btnPlayDemo" title="Volver a reproducir">▶</button>
 
     </footer>
 
+   <script>
+    const audio = document.getElementById('audioFondo');
+    const btnPlay = document.getElementById('btnPlayDemo');
+
+    const tiempoGuardado = sessionStorage.getItem('audioTiempo');
+    if (tiempoGuardado) {
+        audio.currentTime = parseFloat(tiempoGuardado);
+    }
+
+    const intentoPlay = audio.play();
+    
+    if (intentoPlay !== undefined) {
+        intentoPlay.catch(error => {
+            console.log("Autoplay bloqueado. Esperando interacción del usuario...");
+            
+            const activarConInteraccion = () => {
+                audio.play();
+                document.removeEventListener('click', activarConInteraccion);
+                document.removeEventListener('keydown', activarConInteraccion);
+            };
+
+            document.addEventListener('click', activarConInteraccion);
+            document.addEventListener('keydown', activarConInteraccion);
+        });
+    }
+
+    btnPlay.addEventListener('click', (e) => {
+        e.stopPropagation(); 
+        audio.currentTime = 0;
+        audio.play();
+    });
+
+    window.addEventListener('beforeunload', () => {
+        sessionStorage.setItem('audioTiempo', audio.currentTime);
+    });
+</script>
 </body>
 
 </html>

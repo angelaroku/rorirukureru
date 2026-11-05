@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contacto</title>
-  
+
   <style>
     body {
       margin: 0;
@@ -14,23 +14,61 @@
       color: #ccdbca;
       font-family: 'Orbitron', sans-serif;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
       text-shadow: 0 0 5px #082503;
 
-      background-image: repeating-linear-gradient(
-                0deg,
-                rgba(0, 255, 0, 0.05),
-                rgba(0, 255, 0, 0.05) 2px,
-                transparent 2px,
-                transparent 4px
-            );
+      background-image: repeating-linear-gradient(0deg,
+          rgba(0, 255, 0, 0.05),
+          rgba(0, 255, 0, 0.05) 2px,
+          transparent 2px,
+          transparent 4px);
 
     }
 
+
+    .barraNavegacion {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(17, 17, 17, 0.95);
+      border-bottom: 2px solid #072c00;
+      padding: 12px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      box-sizing: border-box;
+    }
+
+    .barraNavegacion nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    .barraNavegacion a {
+      color: #5ae3bc;
+      text-decoration: none;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+    }
+
+    .barraNavegacion a:hover {
+      color: #82d2be;
+      text-shadow: 0 0 5px #5ae3bc;
+    }
+
+
     #contacto {
       text-align: center;
+      margin-top: 60px;
+      margin-top: auto;
+      margin-bottom: auto;
     }
 
     .zonaContactame {
@@ -55,35 +93,84 @@
     img.logoImg {
       border-radius: 10px;
     }
+
+    footer {
+      background-color: rgba(17, 17, 17, 0.95);
+      border-top: 2px solid #072c00;
+      width: 100%;
+      text-align: center;
+      font-size: 0.6rem;
+      padding: 12px 0;
+      color: #888;
+      margin-top: 40px;
+      box-sizing: border-box;
+    }
+
+    footer p {
+      margin: 0;
+    }
   </style>
 </head>
 
 <body>
+
+  <header class="barraNavegacion">
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="contacto.html">Contacto</a>
+      <a href="rorirukureru.html">¿Qué es?</a>
+      <a href="miscosis.html">rorirukureru</a>
+
+    </nav>
+  </header>
 
   <content id="contacto">
     <h1>Contacto</h1>
     <hr />
     <section class="zonaContactame">
       <div>
-        <img src="img/iconoInstagram.png" alt="Redes" class="logoImg"/>
+        <img src="img/iconoInstagram.png" alt="Redes" class="logoImg" />
         <p>@rorirukureru</p>
       </div>
       <div>
         <img src="img/iconoCorreo.png" alt="Correo" class="logoImg" />
         <p>faundezroku@gmail.com</p>
       </div>
+
       <div>
-        <img src="img/iconoTelefono.png" alt="Teléfono" class="logoImg"/>
-        <p>661 18 96 04</p>
-      </div>
-      <div>
-        <img src="img/iconoUbicacion.png" alt="Ubicación" class="logoImg"/>
+        <img src="img/iconoUbicacion.png" alt="Ubicación" class="logoImg" />
         <p>Madrid, España</p>
       </div>
     </section>
   </content>
 
+
+
+  <footer>
+
+    <p>
+      <audio id="audioFondo" src="sounds/enLap4r3d_DEMO.wav" preload="auto" autoplay></audio>
+      Estás oyendo una EnLaPared - RokuDEMO
+    </p>
+  </footer>
+
+  <script>
+    const audio = document.getElementById('audioFondo');
+
+    const tiempoGuardado = sessionStorage.getItem('audioTiempo');
+    if (tiempoGuardado) {
+      audio.currentTime = parseFloat(tiempoGuardado);
+    }
+
+    audio.play().catch(e => {
+      console.log("El navegador requiere una interacción previa para reproducir audio.");
+    });
+
+    window.addEventListener('beforeunload', () => {
+      sessionStorage.setItem('audioTiempo', audio.currentTime);
+    });
+  </script>
+
 </body>
 
 </html>
-
